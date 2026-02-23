@@ -24,7 +24,7 @@ pipeline {
 
         stage('Checkout from Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/KastroVKiran/Book-My-Show.git'
+                git branch: 'main', url: 'https://github.com/zakics444/Book-My-Show.git'
                 sh 'ls -la'  // Verify files after checkout
             }
         }
@@ -34,8 +34,8 @@ pipeline {
                 withSonarQubeEnv('sonar-server') {
                     sh ''' 
                     $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=BMS \
-                        -Dsonar.projectKey=BMS
+                        -Dsonar.projectName=BMS2 \
+                        -Dsonar.projectKey=BMS2
                     '''
                 }
             }
