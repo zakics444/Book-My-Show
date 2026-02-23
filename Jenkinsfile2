@@ -10,8 +10,8 @@ pipeline {
 
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
-        DOCKER_IMAGE = 'kastrov/bms:latest'
-        EKS_CLUSTER_NAME = 'kastro-eks'
+        DOCKER_IMAGE = 'zaki10/bms:latest'
+        EKS_CLUSTER_NAME = 'zaki-eks'
         AWS_REGION = 'us-east-1'
     }
 
@@ -81,7 +81,7 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: 'docker') {
                         sh ''' 
                         echo "Building Docker image..."
                         docker build --no-cache -t $DOCKER_IMAGE -f bookmyshow-app/Dockerfile bookmyshow-app
